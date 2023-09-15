@@ -8,6 +8,6 @@ workflows:
       groups:
         - Firebase
     scripts:
-      - flutter build web
-      - firebase deploy --token "$FIREBASE_TOKEN"
+      - flutter upgrade
+      - flutter build web --release
  
