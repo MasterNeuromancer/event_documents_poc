@@ -1,13 +1,17 @@
+import 'package:event_documents_poc/firebase/firebase_providers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'firebase_auth_repository.g.dart';
+part 'auth_repository.g.dart';
 
 class AuthRepository {
-  AuthRepository(this._auth, this._ref);
+  AuthRepository(
+    this._auth,
+    // this._ref,
+  );
   final FirebaseAuth _auth;
-  final Ref _ref;
+  // final Ref _ref;
 
   Stream<User?> authStateChanges() => _auth.authStateChanges();
   User? get currentUser => _auth.currentUser;
@@ -55,13 +59,11 @@ class AuthRepository {
 }
 
 @Riverpod(keepAlive: true)
-FirebaseAuth firebaseAuth(FirebaseAuthRef ref) {
-  return FirebaseAuth.instance;
-}
-
-@Riverpod(keepAlive: true)
 AuthRepository authRepository(AuthRepositoryRef ref) {
-  return AuthRepository(ref.watch(firebaseAuthProvider), ref);
+  return AuthRepository(
+    ref.watch(firebaseAuthProvider),
+    // ref,
+  );
 }
 
 @riverpod

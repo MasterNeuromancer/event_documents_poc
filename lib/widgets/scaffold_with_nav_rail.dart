@@ -1,4 +1,4 @@
-import 'package:event_documents_poc/auth/firebase_auth_repository.dart';
+import 'package:event_documents_poc/firebase/firebase_providers.dart';
 import 'package:event_documents_poc/widgets/custom_nav_rail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

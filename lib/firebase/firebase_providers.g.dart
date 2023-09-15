@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'firebase_auth_repository.dart';
+part of 'firebase_providers.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -20,35 +20,35 @@ final firebaseAuthProvider = Provider<FirebaseAuth>.internal(
 );
 
 typedef FirebaseAuthRef = ProviderRef<FirebaseAuth>;
-String _$authRepositoryHash() => r'96afeeb1fe2d02be9c723ecfc7285d7f7d821775';
+String _$firebaseFirestoreHash() => r'2e7f8bd195d91c027c5155f34b719187867bc113';
 
-/// See also [authRepository].
-@ProviderFor(authRepository)
-final authRepositoryProvider = Provider<AuthRepository>.internal(
-  authRepository,
-  name: r'authRepositoryProvider',
+/// See also [firebaseFirestore].
+@ProviderFor(firebaseFirestore)
+final firebaseFirestoreProvider = Provider<FirebaseFirestore>.internal(
+  firebaseFirestore,
+  name: r'firebaseFirestoreProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$authRepositoryHash,
+      : _$firebaseFirestoreHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef AuthRepositoryRef = ProviderRef<AuthRepository>;
-String _$authStateChangesHash() => r'af0a0185c59bf3c1ad8a9e041075517b3a2dcc31';
+typedef FirebaseFirestoreRef = ProviderRef<FirebaseFirestore>;
+String _$firebaseStorageHash() => r'ddec157566e3f96dac39d44de2cd99f9d71f9b54';
 
-/// See also [authStateChanges].
-@ProviderFor(authStateChanges)
-final authStateChangesProvider = AutoDisposeStreamProvider<User?>.internal(
-  authStateChanges,
-  name: r'authStateChangesProvider',
+/// See also [firebaseStorage].
+@ProviderFor(firebaseStorage)
+final firebaseStorageProvider = Provider<FirebaseStorage>.internal(
+  firebaseStorage,
+  name: r'firebaseStorageProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$authStateChangesHash,
+      : _$firebaseStorageHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef AuthStateChangesRef = AutoDisposeStreamProviderRef<User?>;
+typedef FirebaseStorageRef = ProviderRef<FirebaseStorage>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

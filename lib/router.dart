@@ -1,5 +1,8 @@
-import 'package:event_documents_poc/auth/firebase_auth_repository.dart';
+import 'package:event_documents_poc/auth/auth_repository.dart';
+import 'package:event_documents_poc/document_upload_screen/document_upload_screen.dart';
 import 'package:event_documents_poc/go_router_refresh_stream.dart';
+import 'package:event_documents_poc/rooms_screen/rooms_screen.dart';
+import 'package:event_documents_poc/server_screen/server_screen.dart';
 import 'package:event_documents_poc/sign_in/custom_sign_in_screen.dart';
 import 'package:event_documents_poc/widgets/scaffold_with_nav_rail.dart';
 import 'package:flutter/material.dart';
@@ -55,16 +58,7 @@ final routerProvider = Provider<GoRouter>((ref) {
             path: AppPages.home,
             pageBuilder: (BuildContext context, GoRouterState state) {
               return const NoTransitionPage(
-                child: Column(
-                  children: [
-                    Center(
-                      child: Text(
-                        'hello from file upload screen',
-                        style: TextStyle(color: Colors.red),
-                      ),
-                    ),
-                  ],
-                ),
+                child: DocumentUploadScreen(),
               );
             },
           ),
@@ -73,16 +67,7 @@ final routerProvider = Provider<GoRouter>((ref) {
             path: AppPages.rooms,
             pageBuilder: (BuildContext context, GoRouterState state) {
               return const NoTransitionPage(
-                child: Column(
-                  children: [
-                    Center(
-                      child: Text(
-                        'hello from Rooms Screen',
-                        style: TextStyle(color: Colors.blue),
-                      ),
-                    ),
-                  ],
-                ),
+                child: RoomsScreen(),
               );
             },
           ),
@@ -91,16 +76,7 @@ final routerProvider = Provider<GoRouter>((ref) {
             path: AppPages.server,
             pageBuilder: (BuildContext context, GoRouterState state) {
               return const NoTransitionPage(
-                child: Column(
-                  children: [
-                    Center(
-                      child: Text(
-                        'hello from Server Screen',
-                        style: TextStyle(color: Colors.greenAccent),
-                      ),
-                    ),
-                  ],
-                ),
+                child: ServerScreen(),
               );
             },
           ),
