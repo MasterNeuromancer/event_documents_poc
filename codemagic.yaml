@@ -9,4 +9,5 @@ workflows:
         - Firebase
     scripts:
       - flutter build web --release
+      - firebase deploy
  
