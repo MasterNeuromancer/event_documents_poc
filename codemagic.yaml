@@ -9,5 +9,6 @@ workflows:
         - Firebase
     scripts:
       - flutter build web --release
-      - firebase deploy
+      - echo $FIREBASE_SERVICE_ACCOUNT > $GOOGLE_APPLICATION_CREDENTIALS
+      - firebase deploy --only hosting
  
