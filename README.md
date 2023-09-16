@@ -1,16 +1,9 @@
 # event_documents_poc
 
-A new Flutter project.
+A new Flutter web project meant as Proof of Concept of a simple file upload mechanism for Google Firebase.
 
-## Getting Started
+## Try it out!!
 
-This project is a starting point for a Flutter application.
+Check out this project online. 
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[Event Documents POC](https://event-documents-poc.web.app).
