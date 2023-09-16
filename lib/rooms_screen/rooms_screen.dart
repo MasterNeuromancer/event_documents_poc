@@ -6,18 +6,12 @@ class RoomsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final authProviders = ref.watch(authProvidersProvider);
-    return Column(
+    return const Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const SizedBox(
-          height: 65.0,
-        ),
-        ElevatedButton(
-          onPressed: () {},
-          child: const Text('Rooms Screen'),
-        ),
-        const SizedBox(
-          height: 65.0,
+        Text(
+          'Rooms Screen',
+          style: TextStyle(fontSize: 45.0),
         ),
       ],
     );

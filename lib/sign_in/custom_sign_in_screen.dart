@@ -12,12 +12,12 @@ class CustomSignInScreen extends ConsumerWidget {
     final authProviders = ref.watch(authProvidersProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Event Document POC'),
+        backgroundColor: Theme.of(context).primaryColorLight,
+        title: const Text('Event Documents POC'),
       ),
       body: SignInScreen(
         providers: authProviders,
         // actions: [EmailVerifiedAction(() {})],
-        // footerBuilder: (context, action) => const SignInAnonymouslyFooter(),
       ),
     );
   }

@@ -25,64 +25,95 @@ class _DocumentUploadScreenState extends ConsumerState<DocumentUploadScreen> {
   Widget build(BuildContext context) {
     final user = ref.watch(authRepositoryProvider).currentUser;
     final documentsQuery =
-        ref.watch(firebaseDocumentsProvider).firestoreDocumentsQuery();
-    print(file?.path);
+        ref.watch(firebaseDocumentsProvider).firestoreDocumentsQuery(user!.uid);
     return Column(
       children: [
         const SizedBox(
           height: 65.0,
         ),
-        ElevatedButton(
-          onPressed: () async {
-            FilePickerResult? result = await FilePicker.platform.pickFiles();
+        AnimatedSwitcher(
+          duration: const Duration(seconds: 2),
+          child: fileBytes == null
+              ? ElevatedButton(
+                  onPressed: () async {
+                    FilePickerResult? result =
+                        await FilePicker.platform.pickFiles();
 
-            if (result == null) return;
+                    if (result == null) return;
 
-            setState(() {
-              file = File(result.files.first.name);
-              fileBytes = result.files.first.bytes;
-            });
+                    setState(() {
+                      file = File(result.files.first.name);
+                      fileBytes = result.files.first.bytes;
+                    });
 
-            // await ref.read()
-          },
-          child: const Text('Select Document'),
+                    // await ref.read()
+                  },
+                  child: const Text('Select Document'),
+                )
+              : Padding(
+                  padding: const EdgeInsets.all(26.0),
+                  child: Container(
+                    decoration: BoxDecoration(color: Colors.grey[300]),
+                    padding: const EdgeInsets.all(
+                      16.0,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          file!.path,
+                        ),
+                        Row(
+                          children: [
+                            IconButton(
+                              tooltip: 'Cancel Upload',
+                              onPressed: () {
+                                setState(() {
+                                  file = null;
+                                  fileBytes = null;
+                                });
+                              },
+                              icon: const Icon(
+                                Icons.cancel_outlined,
+                              ),
+                            ),
+                            IconButton(
+                              tooltip: 'Upload Document',
+                              onPressed: () async {
+                                await ref
+                                    .read(firebaseDocumentsProvider)
+                                    .uploadDocument(
+                                      documentPath: file!.path,
+                                      documentName: file!.path,
+                                      description: file!.path,
+                                      currentUser: user,
+                                      fileBytes: fileBytes!,
+                                    );
+                                setState(() {
+                                  file = null;
+                                  fileBytes = null;
+                                });
+                              },
+                              icon: const Icon(
+                                Icons.upload_file,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
         ),
         const SizedBox(
           height: 65.0,
         ),
-        if (file != null)
-          Padding(
-            padding: const EdgeInsets.all(26.0),
-            child: InkWell(
-              onTap: () async {
-                await ref.read(firebaseDocumentsProvider).uploadDocument(
-                      documentPath: file!.path,
-                      documentName: file!.path,
-                      description: file!.path,
-                      currentUser: user!,
-                      fileBytes: fileBytes!,
-                    );
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                ),
-                child: Row(
-                  children: [
-                    Text(
-                      file!.path,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
         Expanded(
           child: FirestoreQueryBuilder<Document>(
             query: documentsQuery,
             builder: (context, snapshot, _) {
               if (snapshot.isFetching) {
-                return const CircularProgressIndicator();
+                return const Text('Loading Files...');
               }
               if (snapshot.hasError) {
                 return Text('error ${snapshot.error}');
@@ -104,11 +135,13 @@ class _DocumentUploadScreenState extends ConsumerState<DocumentUploadScreen> {
                     final currentDocument = snapshot.docs[index];
                     return Container(
                       decoration: BoxDecoration(
-                        color: index % 2 == 0 ? Colors.lightBlue : Colors.white,
+                        color: index % 2 == 0
+                            ? Theme.of(context).primaryColorLight
+                            : Colors.grey[200],
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 12.0,
+                          horizontal: 22.0,
                           vertical: 16.0,
                         ),
                         child: Row(

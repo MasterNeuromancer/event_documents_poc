@@ -16,7 +16,7 @@ class FirebaseDocuments {
   final FirebaseFirestore _firebaseFirestore;
   final FirebaseStorage _firebaseFirestoreStorage;
 
-  Query<Document> firestoreDocumentsQuery() {
+  Query<Document> firestoreDocumentsQuery(String userID) {
     return _firebaseFirestore
         .collection('Documents')
         .withConverter(
@@ -27,7 +27,8 @@ class FirebaseDocuments {
           ) =>
               document.toFirestore(),
         )
-        .orderBy('createdDate');
+        .where("userID", isEqualTo: userID);
+    // .orderBy('createdDate');
   }
 
   Future<void> saveDocument(Document documentBeingSent) async {

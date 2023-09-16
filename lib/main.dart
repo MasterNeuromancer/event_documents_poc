@@ -31,10 +31,8 @@ class EvenDocumentsPocApp extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       title: 'Event Documents POC',
       theme: ThemeData(
-        primaryColor: const Color.fromRGBO(235, 255, 0, 1),
-        colorScheme: ColorScheme.fromSwatch().copyWith(
-          secondary: const Color.fromRGBO(222, 222, 222, 1),
-        ),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlueAccent),
+        useMaterial3: true,
       ),
     );
   }

@@ -49,19 +49,19 @@ class _CustomNavRailState extends State<CustomNavRail> {
       // ),
       destinations: const <NavigationRailDestination>[
         NavigationRailDestination(
-          icon: Icon(Icons.favorite_border),
-          selectedIcon: Icon(Icons.favorite),
-          label: Text('First'),
+          icon: Icon(Icons.folder_copy_outlined),
+          selectedIcon: Icon(Icons.folder_copy),
+          label: Text('User Docs'),
         ),
         NavigationRailDestination(
-          icon: Icon(Icons.bookmark_border),
-          selectedIcon: Icon(Icons.book),
-          label: Text('Second'),
+          icon: Icon(Icons.room_service_outlined),
+          selectedIcon: Icon(Icons.room_service),
+          label: Text('Rooms'),
         ),
         NavigationRailDestination(
-          icon: Icon(Icons.star_border),
-          selectedIcon: Icon(Icons.star),
-          label: Text('Third'),
+          icon: Icon(Icons.code_outlined),
+          selectedIcon: Icon(Icons.code),
+          label: Text('Server'),
         ),
       ],
     );
