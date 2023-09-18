@@ -15,7 +15,9 @@ class ScaffoldWithNavRail extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColorLight,
+        scrolledUnderElevation: 0,
         title: const Text('Event Documents POC'),
+        centerTitle: true,
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 16.0),
